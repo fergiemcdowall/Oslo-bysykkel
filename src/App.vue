@@ -1,9 +1,7 @@
-<!-- TODO -->
-<!-- show closest bysykkel at the top -->
-
 <script setup>
-import Loader from './components/Loader.vue'
 import Error from './components/Error.vue'
+import Loader from './components/Loader.vue'
+import { getBysykkelData } from './lib/BysykkelData.js'
 </script>
 
 <script>
@@ -15,26 +13,7 @@ export default {
     }
   },
   mounted() {
-    const fetchJSON = url => fetch(url).then(item => item.json())
-
-    const syncData = () =>
-      Promise.all(
-        [
-          'https://gbfs.urbansharing.com/oslobysykkel.no/station_information.json',
-          'https://gbfs.urbansharing.com/oslobysykkel.no/station_status.json'
-        ].map(fetchJSON)
-      )
-
-    const joinData = ([info, status]) =>
-      info.data.stations.map(item => ({
-        ...status.data.stations.filter(
-          itemStatus => itemStatus.station_id == item.station_id
-        )[0],
-        ...item
-      }))
-
-    syncData()
-      .then(joinData)
+    getBysykkelData()
       .then(bysykkelData => (this.bysykkelData = bysykkelData))
       .catch(e => (this.syncError = e))
   }

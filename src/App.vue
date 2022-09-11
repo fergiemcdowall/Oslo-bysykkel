@@ -2,8 +2,8 @@
 <!-- show closest bysykkel at the top -->
 
 <script setup>
-import Loader from "./components/Loader.vue";
-import Error from "./components/Error.vue";
+import Loader from './components/Loader.vue'
+import Error from './components/Error.vue'
 </script>
 
 <script>
@@ -11,39 +11,39 @@ export default {
   data() {
     return {
       bysykkelData: [],
-      syncError: null,
-    };
+      syncError: null
+    }
   },
   mounted() {
-    const fetchJSON = (url) => fetch(url).then((item) => item.json());
+    const fetchJSON = url => fetch(url).then(item => item.json())
 
     const syncData = () =>
       Promise.all(
         [
-          "https://gbfs.urbansharing.com/oslobysykkel.no/station_information.json",
-          "https://gbfs.urbansharing.com/oslobysykkel.no/station_status.json",
+          'https://gbfs.urbansharing.com/oslobysykkel.no/station_information.json',
+          'https://gbfs.urbansharing.com/oslobysykkel.no/station_status.json'
         ].map(fetchJSON)
-      );
+      )
 
     const joinData = ([info, status]) =>
-      info.data.stations.map((item) => ({
+      info.data.stations.map(item => ({
         ...status.data.stations.filter(
-          (itemStatus) => itemStatus.station_id == item.station_id
+          itemStatus => itemStatus.station_id == item.station_id
         )[0],
-        ...item,
-      }));
+        ...item
+      }))
 
     syncData()
       .then(joinData)
-      .then((bysykkelData) => (this.bysykkelData = bysykkelData))
-      .catch((e) => (this.syncError = e));
-  },
-};
+      .then(bysykkelData => (this.bysykkelData = bysykkelData))
+      .catch(e => (this.syncError = e))
+  }
+}
 </script>
 
 <template class="container-lg px-3 my-5 markdown-body">
   <h1>Oslo bysykkel</h1>
-  <table>
+  <table class="bikes">
     <thead>
       <tr>
         <th>Name</th>
@@ -84,7 +84,7 @@ export default {
 </template>
 
 <style scoped>
-table {
+table.bikes {
   display: table;
 }
 </style>

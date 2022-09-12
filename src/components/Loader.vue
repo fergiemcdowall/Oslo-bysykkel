@@ -1,3 +1,9 @@
+<!--
+     Author: fergus@mcdowall.no
+     
+     Display a pretty loading wheel
+-->
+
 <template>
   <div class="loader">
     <div />

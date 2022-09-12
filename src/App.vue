@@ -1,6 +1,9 @@
-<!-- TODO -->
-<!-- sort functionality -->
-<!-- distance functionality -->
+<!--
+     Author: fergus@mcdowall.no
+     
+     Display a table that shows each Bysykkel station together with
+     available bikes and docks
+-->
 
 <script setup>
 import Error from './components/Error.vue'

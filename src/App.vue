@@ -28,13 +28,13 @@ export default {
 </script>
 
 <template class="container-lg px-3 my-5 markdown-body">
-  <h1>Oslo bysykkel</h1>
+  <h1>Oslo Bysykkel</h1>
   <table class="bikes">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Bikes available</th>
-        <th>Docks available</th>
+        <th>Stasjonsnavn</th>
+        <th>Ledige sykler</th>
+        <th>Tilgjengelige låser</th>
       </tr>
     </thead>
     <tbody>

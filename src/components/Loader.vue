@@ -1,24 +1,18 @@
 <template>
-  <td colspan="3" class="loader">
-    <div>
-      <div />
-    </div>
-    <br />
-    loading...
-  </td>
+  <div class="loader">
+    <div />
+  </div>
+  <br />
+  loading...
 </template>
 
 <style scoped>
-.loader {
-  text-align: center;
-}
-
-.loader div {
+div.loader {
   justify-content: center;
   display: flex;
 }
 
-.loader div div {
+div.loader div {
   border: 16px solid #f3f3f3;
   border-radius: 50%;
   border-top: 16px solid #555;

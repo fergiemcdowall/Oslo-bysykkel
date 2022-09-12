@@ -1,3 +1,7 @@
+<!-- TODO -->
+<!-- sort functionality -->
+<!-- distance functionality -->
+
 <script setup>
 import Error from './components/Error.vue'
 import Loader from './components/Loader.vue'
@@ -32,7 +36,9 @@ export default {
     </thead>
     <tbody>
       <tr v-if="!bysykkelData.length && !syncError">
-        <Loader />
+        <td colspan="3" class="loader">
+          <Loader />
+        </td>
       </tr>
       <tr v-if="syncError">
         <td colspan="3">
@@ -65,5 +71,8 @@ export default {
 <style scoped>
 table.bikes {
   display: table;
+}
+td.loader {
+  text-align: center;
 }
 </style>
